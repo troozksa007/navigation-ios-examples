@@ -21,8 +21,8 @@ class AdvancedViewController: UIViewController, MGLMapViewDelegate, CLLocationMa
     var routes: [Route]? {
         didSet {
             guard let routes = routes, let current = routes.first else { mapView?.removeRoutes(); return }
-            mapView?.showRoutes(routes)
-            mapView?.showWaypoints(current)
+            mapView?.show(routes)
+            mapView?.showWaypoints(on: current)
         }
     }
     var startButton: UIButton?
@@ -103,8 +103,8 @@ class AdvancedViewController: UIViewController, MGLMapViewDelegate, CLLocationMa
             guard let routes = routes else { return }
             self.routes = routes
             self.startButton?.isHidden = false
-            self.mapView?.showRoutes(routes)
-            self.mapView?.showWaypoints(self.currentRoute!)
+            self.mapView?.show(routes)
+            self.mapView?.showWaypoints(on: self.currentRoute!)
         }
     }
     
